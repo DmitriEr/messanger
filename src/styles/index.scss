@@ -1,5 +1,6 @@
 @import '~antd/dist/antd.css';
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+@import '../components/Sider/index.scss';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
 
 body {
   min-height: 100vh;
@@ -20,6 +21,3 @@ body {
   background-color: green;
 }
 
-.sidebar {
-  background-color: grey;
-}
