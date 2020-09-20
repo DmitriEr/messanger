@@ -13,7 +13,11 @@ const initialState: TitleType = {
   title: 'Messages',
 };
 
-export const titleReducer = (state = initialState, action: TitleAction) => {
+const updateState = localStorage.getItem('title');
+
+const currentState: TitleType = updateState === null ? initialState : JSON.parse(updateState);
+
+export const titleReducer = (state = currentState, action: TitleAction) => {
   switch(action.type) {
     case CHANGE_THEME:
       return {

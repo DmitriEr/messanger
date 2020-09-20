@@ -17,7 +17,11 @@ const initialState: Themes = {
   'FAQ': [],
 };
 
-export const themeReducer = (state = initialState, action: ActionType) => {
+const updateState = localStorage.getItem('data');
+
+const currentState: Themes = updateState === null ? initialState : JSON.parse(updateState);
+
+export const themeReducer = (state = currentState, action: ActionType) => {
   switch(action.type) {
     case CREATE_THEME:
       return { ...state, [action.payload.title]: action.payload.message}

@@ -1,5 +1,8 @@
 @import '~antd/dist/antd.css';
 @import '../components/Sider/index.scss';
+@import '../components/Header/index.scss';
+@import '../components/Footer/index.scss';
+@import '../components/Content/index.scss';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;400;700&display=swap');
 
 body {
@@ -12,12 +15,3 @@ body {
   font-weight: 400;
   line-height: 1.2;
 }
-
-.header {
-  background-color: red;
-}
-
-.footer {
-  background-color: green;
-}
-

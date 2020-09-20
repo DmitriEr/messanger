@@ -1,0 +1,20 @@
+.content {
+  height: 100%;
+  width: 100% - 20%;
+  margin-top: 100px;
+  margin-left: 20%;
+  background-color: transparent;
+  & .content__card {
+    background-color: #fff;
+    border: solid 1px #000;
+    border-radius: 2px;
+    margin: 10px 10px;
+    padding: 0px 10px;
+    font-size: 14px;
+    z-index: 0;
+    & .content__card-avatar svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

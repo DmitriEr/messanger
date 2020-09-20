@@ -6,7 +6,6 @@ import { addMessage } from '../../redux/actions/actions';
 const Footer: FunctionComponent = () => {
   const [text, setText] = useState('');
   const dispatch = useDispatch();
-  // const messages = useSelector((state: any) => state.themes.themes);
   const currentTheme = useSelector((state: any) => state.title.title);
 
   const changeKeyboardTextarea = (event: any) => {
@@ -23,13 +22,18 @@ const Footer: FunctionComponent = () => {
   }
 
   const textareaHandlerMessage = (event: any) => {
-    // console.log(messages)
     setText(event.target.value);
   }
 
   return (
     <Layout.Footer className="footer">
-      <textarea onKeyDown={changeKeyboardTextarea} onChange={textareaHandlerMessage} value={text} />
+      <textarea
+        className="footer__textarea"
+        onKeyDown={changeKeyboardTextarea}
+        onChange={textareaHandlerMessage}
+        value={text}
+      />
+      <button className="sidebar__add-button">Send</button>
     </Layout.Footer>
   );
 };

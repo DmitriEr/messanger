@@ -1,17 +1,35 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Layout } from 'antd';
+import { Layout, Comment } from 'antd';
+import { BookOutlined } from '@ant-design/icons';
 
 const Content: FunctionComponent = () => {
   const messages = useSelector((state: any) => state.themes);
-  const currentTheme = useSelector((state: any) => state.title.title);
-  console.log(messages[currentTheme])
+  const currentTheme = useSelector((state: any) => state.title);
+
+  useEffect(() => {
+    const currentData = JSON.stringify(messages);
+    const currentTitle = JSON.stringify(currentTheme);
+    localStorage.setItem('data', currentData);
+    localStorage.setItem('title', currentTitle);
+  }, [messages, currentTheme]);
+
   return (
     <Layout.Content className="content">
       {
-        messages[currentTheme].map((test: string, index: number) => {
+        messages[currentTheme.title].map((text: string, index: number) => {
           return (
-          <p key={`${test}-${index}`}>{test}</p>
+            <Comment
+              author={<span>User</span>}
+              key={`${text}-${index}`}
+              avatar={<BookOutlined className="content__card-avatar"/>}
+              className="content__card"
+              content={
+              <p>
+                {text}
+              </p>
+            }
+            />
           )
         })
       }
