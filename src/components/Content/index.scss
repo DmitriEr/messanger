@@ -1,7 +1,7 @@
 .content {
   height: 100%;
   width: 100% - 20%;
-  margin-top: 100px;
+  margin-top: 70px;
   margin-left: 20%;
   background-color: transparent;
   & .content__card {
@@ -16,5 +16,19 @@
       width: 20px;
       height: 20px;
     }
+  }
+}
+
+@media (max-width: 800px) {
+  .content {
+    margin-left: 40%;
+    width: 100% - 40%;
+  }
+}
+
+@media (max-width: 400px) {
+  .content {
+    margin-left: 0%;
+    width: 100%;
   }
 }

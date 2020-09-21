@@ -2,21 +2,22 @@ import React, { FunctionComponent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; 
 import { Layout } from 'antd';
 import { addMessage } from '../../redux/actions/actions';
+import { RootReducer } from '../../interface';
 
 const Footer: FunctionComponent = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState<string>('');
   const dispatch = useDispatch();
-  const currentTheme = useSelector((state: any) => state.title.title);
+  const currentTheme: string = useSelector((state: RootReducer) => state.title.title);
 
   const changeKeyboardTextarea = (event: any) => {
     if (event.key === 'Enter') {
       event.preventDefault();
       const newMessage: string = event.target.value;
-      const test: any = {
+      const currentMessage: any = {
         title: currentTheme,
         message: newMessage,
       }
-      dispatch(addMessage(test));
+      dispatch(addMessage(currentMessage));
       setText('');
     }
   }

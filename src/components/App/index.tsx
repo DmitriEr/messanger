@@ -5,12 +5,12 @@ import '../../styles/index.scss';
 import HeaderApp from '../Header';
 import ContentApp from '../Content';
 import FooterApp from '../Footer';
-import Sidebar from '../Sider';
+import Sider from '../Sider';
 
 const App: FunctionComponent = () => {
   return (
     <Layout className="wrapper">
-      <Sidebar />
+      <Sider />
       <Layout className="main">
         <HeaderApp />
         <ContentApp />
