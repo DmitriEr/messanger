@@ -25,14 +25,18 @@ const Sider: FunctionComponent = () => {
         title: newTitle,
         message: [],
       }
-      dispatch(createTheme(newTheme));
+      if (newTitle.trim().length) {
+        dispatch(createTheme(newTheme));
+      }
       setText('');
     }
   }
 
   const changeTitleHandler = (event: any) => {
     const title: string = event.target.dataset.name;
-    dispatch(changeTitle(title));
+    if (title.trim().length) {
+      dispatch(changeTitle(title));
+    }
   }
 
   useEffect(() => {

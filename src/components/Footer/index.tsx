@@ -17,7 +17,9 @@ const Footer: FunctionComponent = () => {
         title: currentTheme,
         message: newMessage,
       }
-      dispatch(addMessage(currentMessage));
+      if (newMessage.trim().length) {
+        dispatch(addMessage(currentMessage));
+      }
       setText('');
     }
   }
