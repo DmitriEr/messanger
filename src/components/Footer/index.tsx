@@ -9,19 +9,26 @@ const Footer: FunctionComponent = () => {
   const dispatch = useDispatch();
   const currentTheme: string = useSelector((state: RootReducer) => state.title.title);
 
+  const showMessage = () => {
+    const currentMessage: any = {
+      title: currentTheme,
+      message: text,
+    }
+    if (text.trim().length) {
+      dispatch(addMessage(currentMessage));
+    }
+    setText('');
+  }
+
   const changeKeyboardTextarea = (event: any) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      const newMessage: string = event.target.value;
-      const currentMessage: any = {
-        title: currentTheme,
-        message: newMessage,
-      }
-      if (newMessage.trim().length) {
-        dispatch(addMessage(currentMessage));
-      }
-      setText('');
+      showMessage();
     }
+  }
+
+  const changeClick = () => {
+    showMessage();
   }
 
   const textareaHandlerMessage = (event: any) => {
@@ -36,7 +43,7 @@ const Footer: FunctionComponent = () => {
         onChange={textareaHandlerMessage}
         value={text}
       />
-      <button className="sidebar__add-button">Send</button>
+      <button className="sidebar__add-button" onClick={changeClick}>Send</button>
     </Layout.Footer>
   );
 };

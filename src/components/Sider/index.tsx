@@ -14,22 +14,35 @@ const Sider: FunctionComponent = () => {
   const number: number = useWindowSize();
   const currentData: any = useSelector((state: RootReducer) => state.themes);
 
+  useEffect(() => {
+    if(number >= 400 && btn !== 'block') {
+      setBtn('block');
+    }
+  }, [number, btn])
+
   const inputHandlerTheme = (event: any) => {
     setText(event.target.value);
   }
 
+  const showTheme = () => {
+    const newTheme = {
+      title: text,
+      message: [],
+    }
+    if (text.trim().length) {
+      dispatch(createTheme(newTheme));
+    }
+    setText('');
+  }
+
   const changeInputKeyboard = (event: any) => {
     if (event.key === 'Enter') {
-      const newTitle: string = event.target.value;
-      const newTheme = {
-        title: newTitle,
-        message: [],
-      }
-      if (newTitle.trim().length) {
-        dispatch(createTheme(newTheme));
-      }
-      setText('');
+      showTheme();
     }
+  }
+
+  const changeInputClick = () => {
+    showTheme();
   }
 
   const changeTitleHandler = (event: any) => {
@@ -38,12 +51,6 @@ const Sider: FunctionComponent = () => {
       dispatch(changeTitle(title));
     }
   }
-
-  useEffect(() => {
-    if(number >= 400 && btn !== 'block') {
-      setBtn('block');
-    }
-  }, [number, btn])
 
   const changeSizeSideBar: () => string = () => {
     if (number >= 800) {
@@ -86,7 +93,7 @@ const Sider: FunctionComponent = () => {
             onKeyDown={changeInputKeyboard}
             value={text}
           />
-           <button className="sidebar__add-button">Add</button>
+           <button className="sidebar__add-button" onClick={changeInputClick}>Add</button>
         </div>
         <div>
           {
